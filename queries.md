@@ -45,7 +45,7 @@
 ### 5. All the companies that have less than 1000 employees and have been founded before 2005. Order them by the number of employees and limit the search to 10 companies.
 
 
-- **`query`**: /_[{ number_of_employees: { $lt: 1000 } }, { founded_year: { $lt: 2005 } }] }_/
+- **`query`**: /_{$and: [{ number_of_employees: { $lt: 1000 } }, { founded_year: { $lt: 2005 } }] }_/
 - **`projection`**: /_You should copy/paste the projection in here_/
 - **`sort`**: /_{number_of_employees: -1}_/
 - **`skip`**: /_You should copy/paste the skip in here_/
@@ -75,7 +75,7 @@
 ### 8. All the companies that have at least 100 employees but less than 1000. Retrieve only the `name` and `number of employees` fields.
 
 
-- **`query`**: /_{ $and: [{ number_of_employees: { $gte: 100 } }, { number_of_employees: { $lt: 1000 } }_/
+- **`query`**: /_{ $and: [{ number_of_employees: { $gte: 100 } }, { number_of_employees: { $lt: 1000 }}] }_/
 - **`projection`**: /_{name: 1, number_of_employees: 1, _id: 0}_/
 - **`sort`**: /_You should copy/paste the sort in here_/
 - **`skip`**: /_You should copy/paste the skip in here_/
@@ -187,7 +187,7 @@
 
 
 - **`query`**: /_{ $and: [{ founded_year: { $gte: 2000 } },
-{ founded_year: { $lte: 2010 } },{ acquisition: null }]}_/
+{ founded_year: { $lte: 2010 } }, {"acquisition.acquired_year": {$gte: 2011 }}]}_/
 - **`projection`**: /_You should copy/paste the projection in here_/
 - **`sort`**: /_You should copy/paste the sort in here_/
 - **`skip`**: /_You should copy/paste the skip in here_/
